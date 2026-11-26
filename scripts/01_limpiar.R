@@ -1,7 +1,14 @@
+## Script 01 - Limpieza de la base de datos
+# Renato Cortez y Constanza Pinilla
+# 26-11-2026
+
+## Carga de datos --------------------------------------------------------------
 
 library(dplyr)
 library(tidyverse)
 library(tidyr)
+library(broom)
+library(haven)
 
 datos_exp <- read.csv2("data/raw/salida_da_10_2026.csv")
 
@@ -10,6 +17,7 @@ ncol(datos_exp)
 dim(datos_exp)
 str(datos_exp)
 
+# Limpieza de datos ------------------------------------------------------------
 
 sum(is.na(datos_exp$PESO_BRUTO_KG))    # Hay 431 NA en el peso bruto
 unique(datos_exp$COD_VIA_TRANSPORTE)   # Hay un 0 que no tiene correspondencia
@@ -70,15 +78,24 @@ exp_limpio <-
 # Se excluyeron los registros correspondientes a las categorías "S" y "" de la variable 
 # COD_TIPO_CARGA y un "0" de la variable COD_VIA_TRANSPORTE debido a que no fue 
 # posible identificar su correspondencia en la tabla de codificación utilizada.
-# También se excluyeron los 431 valores perdidos de la variable PESO_BRUTO_KG.
+# También se excluyeron los 431 valores perdidos de la variable PESO_BRUTO_KG y 
+# se eligieron los 10 países a los que más se les exporta.
 # Con estas decisiones se busca trabajar con categorías de carga identificables 
 # y comparables para el análisis descriptivo y la estimación del modelo de regresión.
 
+## Modelo de prueba ------------------------------------------------------------
+
+exp_limpio |> 
+  lm(log(peso_bruto_kg) ~ transporte + pais_destino + tipo_carga, data = _) |> 
+  tidy(conf.int = TRUE) |>
+  print(n=21)
+
+## Guardado de base limpia -----------------------------------------------------
 
 dir.create("data/processed", showWarnings = FALSE)
 write.csv(exp_limpio, "data/processed/exportaciones_limpio.csv", row.names = FALSE)
+write_dta(exp_limpio, "data/processed/exportaciones_limpio.dta")
 
 file.exists("data/processed/exportaciones_limpio.csv")
-
-
+file.exists("data/processed/exportaciones_limpio.dta")
 

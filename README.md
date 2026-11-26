@@ -1,14 +1,13 @@
 Proyecto final Fundamentos de programación
 
-Renato Cortez Zapata
-Constanza Pinilla Concha
+Renato Cortez Zapata y Constanza Pinilla Concha
 
 
 ## Datos
 
 FUENTE:                Servicio Nacional de aduanas, Chile
 ARCHIVO:               salida_da_10_2026.csv
-ENLACE:                https://www.aduana.cl/base-de-datos-operaciones-de-salida/aduana/2024-11-12/153724.html
+ENLACE:                https://www.aduana.cl/aduana/site/docs/20241112/20241112153724/salida_da_10_2026.csv
 FECHA DE DESCARGA:     Noviembre 2026
 UNIDAD DE OBSERVACIÓN: Cada registro individual de exportación por ítem arancelario 
 
