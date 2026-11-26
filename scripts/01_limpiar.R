@@ -1,14 +1,18 @@
-## Script 01 - Limpieza de la base de datos
+
+## Script 01 - Limpieza de la base de datos ------------------------------------
+
 # Renato Cortez y Constanza Pinilla
 # 26-11-2026
 
-## Carga de datos --------------------------------------------------------------
+## Carga de paquetes -----------------------------------------------------------
 
 library(dplyr)
 library(tidyverse)
 library(tidyr)
 library(broom)
 library(haven)
+
+## Carga de datos --------------------------------------------------------------
 
 datos_exp <- read.csv2("data/raw/salida_da_10_2026.csv")
 
@@ -17,7 +21,7 @@ ncol(datos_exp)
 dim(datos_exp)
 str(datos_exp)
 
-# Limpieza de datos ------------------------------------------------------------
+## Limpieza de datos -----------------------------------------------------------
 
 sum(is.na(datos_exp$PESO_BRUTO_KG))    # Hay 431 NA en el peso bruto
 unique(datos_exp$COD_VIA_TRANSPORTE)   # Hay un 0 que no tiene correspondencia
