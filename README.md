@@ -14,8 +14,9 @@ UNIDAD DE OBSERVACIÓN: Cada registro individual de exportación por ítem aranc
 
 ## Pregunta
 
-¿De qué manera el país de destino y la vía de transporte condicionan
-el peso bruto de la carga exportada?
+¿Cómo varía el peso bruto de las exportaciones chilenas según la vía de transporte
+y el país de destino, considerando el tipo de carga exportada, entre enero y 
+octubre de 2026?
 
 ## Estructura del proyecto
 
